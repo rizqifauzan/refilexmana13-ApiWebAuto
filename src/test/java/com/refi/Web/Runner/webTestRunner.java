@@ -13,5 +13,5 @@ import org.junit.runner.RunWith;
         tags = "@Web"
 )
 
-public class webRunner {
+public class webTestRunner {
 }

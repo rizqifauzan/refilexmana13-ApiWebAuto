@@ -33,24 +33,12 @@ dependencies {
 
 test {
     useJUnit()
-}
 
-//tasks.register("runAllTests", Test) {
-//    useJUnit()
-//
-//    testClassesDirs = sourceSets.test.output.classesDirs
-//    classpath = sourceSets.test.runtimeClasspath
-//    outputs.upToDateWhen { false }
-//
-//    filter {
-//        includeTestsMatching "*CucumberTest*"
-//    }
-//
-//
-//    testLogging {
-//        events "passed", "failed", "skipped", "standard_out"
-//    }
-//}
+    testLogging {
+        events "passed", "skipped", "failed"
+        showStandardStreams = true
+    }
+}
 
 tasks.register('runApiTests', Test) {
     useJUnit()
@@ -61,7 +49,7 @@ tasks.register('runApiTests', Test) {
 
     // Run only the API test runner
     filter {
-        includeTestsMatching 'com.refi.api.runners.apiRunners'
+        includeTestsMatching 'com.refi.api.runners.apiTestRunner'
     }
 
     description = 'Run API tests with Cucumber'
@@ -75,7 +63,7 @@ tasks.register("runWebTests", Test) {
     outputs.upToDateWhen { false }
     // Run only the Web test runner
     filter {
-        includeTestsMatching 'com.refi.Web.Runner.webRunner'
+        includeTestsMatching 'com.refi.Web.Runner.webTestRunner'
     }
 
     description = 'Run Web tests with Cucumber'

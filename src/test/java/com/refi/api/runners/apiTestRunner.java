@@ -13,5 +13,5 @@ import org.junit.runner.RunWith;
         tags = "@api"
 )
 
-public class apiRunners {
+public class apiTestRunner {
 }
