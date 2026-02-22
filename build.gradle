@@ -38,18 +38,26 @@ test {
 tasks.register("runAllTests", Test) {
     useJUnit()
 
-    // Run all tests (both API and Web)
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    outputs.upToDateWhen { false }
+
     filter {
-        includeTestsMatching 'com.refi.runners.apiRunners'
-        includeTestsMatching 'com.refi.runners.webRunner'
+        includeTestsMatching "*CucumberTest*"
     }
 
-    description = 'Run all tests with Cucumber'
-    group = 'verification'
+
+    testLogging {
+        events "passed", "failed", "skipped", "standard_out"
+    }
 }
 
 tasks.register('runApiTests', Test) {
     useJUnit()
+
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    outputs.upToDateWhen { false }
 
     // Run only the API test runner
     filter {
@@ -62,7 +70,9 @@ tasks.register('runApiTests', Test) {
 
 tasks.register("runWebTests", Test) {
     useJUnit()
-
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    outputs.upToDateWhen { false }
     // Run only the Web test runner
     filter {
         includeTestsMatching 'com.refi.runners.webRunner'
