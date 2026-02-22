@@ -5,7 +5,7 @@ import io.restassured.response.Response;
 import org.json.JSONObject;
 
 public class baseApi {
-    private String TOKEN = "dd2c89e33e14d7327431e48bdca92dbe982bcbd9003593df47bf28246aab1d3f";
+    private String TOKEN = System.getenv("TOKEN");
     private String URL = "https://gorest.co.in/public/v2/users";
 
 
