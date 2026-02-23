@@ -3,9 +3,12 @@ package com.refi.api.baseApi;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.json.JSONObject;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class baseApi {
-    private String TOKEN = System.getenv("TOKEN");
+    private static final Dotenv dotenv = Dotenv.load();
+    private String TOKEN = dotenv.get("TOKEN");
+
     private String URL = "https://gorest.co.in/public/v2/users";
 
 
